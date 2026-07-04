@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { COURSES } from "@/lib/sahbi/data";
 import { PageHeader } from "@/components/sahbi/PageHeader";
+import type { Lesson, Module, Course } from "@/lib/sahbi/types";
 
 export const Route = createFileRoute("/app/learn/$courseId")({
   component: ModuleView,
@@ -21,14 +22,14 @@ export const Route = createFileRoute("/app/learn/$courseId")({
 });
 
 function ModuleView() {
-  const { module, course } = Route.useLoaderData();
+  const { module, course } = Route.useLoaderData() as { module: Module; course: Course };
   return (
     <main className="mx-auto max-w-2xl px-6 pt-10 pb-16">
       <Link to="/app/learn" className="font-mono text-[11px] uppercase tracking-widest text-night/40">← Parcours</Link>
       <PageHeader eyebrow={course.title} title={module.title} subtitle={module.description} />
 
       <div className="space-y-3">
-        {module.lessons.map((l, i) => (
+        {module.lessons.map((l: Lesson, i: number) => (
           <Link
             key={l.id}
             to="/app/lesson/$lessonId"

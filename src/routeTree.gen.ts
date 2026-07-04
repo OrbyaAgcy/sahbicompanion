@@ -16,6 +16,10 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppLearnRouteImport } from './routes/app.learn'
+import { Route as AppLessonLessonIdRouteImport } from './routes/app.lesson.$lessonId'
+import { Route as AppLearnCourseIdRouteImport } from './routes/app.learn.$courseId'
 
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
@@ -52,34 +56,65 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppLearnRoute = AppLearnRouteImport.update({
+  id: '/learn',
+  path: '/learn',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppLessonLessonIdRoute = AppLessonLessonIdRouteImport.update({
+  id: '/lesson/$lessonId',
+  path: '/lesson/$lessonId',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppLearnCourseIdRoute = AppLearnCourseIdRouteImport.update({
+  id: '/$courseId',
+  path: '/$courseId',
+  getParentRoute: () => AppLearnRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/app': typeof AppRoute
+  '/app': typeof AppRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/pricing': typeof PricingRoute
   '/signup': typeof SignupRoute
+  '/app/learn': typeof AppLearnRouteWithChildren
+  '/app/': typeof AppIndexRoute
+  '/app/learn/$courseId': typeof AppLearnCourseIdRoute
+  '/app/lesson/$lessonId': typeof AppLessonLessonIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/app': typeof AppRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/pricing': typeof PricingRoute
   '/signup': typeof SignupRoute
+  '/app/learn': typeof AppLearnRouteWithChildren
+  '/app': typeof AppIndexRoute
+  '/app/learn/$courseId': typeof AppLearnCourseIdRoute
+  '/app/lesson/$lessonId': typeof AppLessonLessonIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/app': typeof AppRoute
+  '/app': typeof AppRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/pricing': typeof PricingRoute
   '/signup': typeof SignupRoute
+  '/app/learn': typeof AppLearnRouteWithChildren
+  '/app/': typeof AppIndexRoute
+  '/app/learn/$courseId': typeof AppLearnCourseIdRoute
+  '/app/lesson/$lessonId': typeof AppLessonLessonIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,15 +126,22 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/pricing'
     | '/signup'
+    | '/app/learn'
+    | '/app/'
+    | '/app/learn/$courseId'
+    | '/app/lesson/$lessonId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/app'
     | '/forgot-password'
     | '/login'
     | '/onboarding'
     | '/pricing'
     | '/signup'
+    | '/app/learn'
+    | '/app'
+    | '/app/learn/$courseId'
+    | '/app/lesson/$lessonId'
   id:
     | '__root__'
     | '/'
@@ -109,11 +151,15 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/pricing'
     | '/signup'
+    | '/app/learn'
+    | '/app/'
+    | '/app/learn/$courseId'
+    | '/app/lesson/$lessonId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AppRoute: typeof AppRoute
+  AppRoute: typeof AppRouteWithChildren
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   OnboardingRoute: typeof OnboardingRoute
@@ -172,12 +218,66 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/learn': {
+      id: '/app/learn'
+      path: '/learn'
+      fullPath: '/app/learn'
+      preLoaderRoute: typeof AppLearnRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/lesson/$lessonId': {
+      id: '/app/lesson/$lessonId'
+      path: '/lesson/$lessonId'
+      fullPath: '/app/lesson/$lessonId'
+      preLoaderRoute: typeof AppLessonLessonIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/learn/$courseId': {
+      id: '/app/learn/$courseId'
+      path: '/$courseId'
+      fullPath: '/app/learn/$courseId'
+      preLoaderRoute: typeof AppLearnCourseIdRouteImport
+      parentRoute: typeof AppLearnRoute
+    }
   }
 }
 
+interface AppLearnRouteChildren {
+  AppLearnCourseIdRoute: typeof AppLearnCourseIdRoute
+}
+
+const AppLearnRouteChildren: AppLearnRouteChildren = {
+  AppLearnCourseIdRoute: AppLearnCourseIdRoute,
+}
+
+const AppLearnRouteWithChildren = AppLearnRoute._addFileChildren(
+  AppLearnRouteChildren,
+)
+
+interface AppRouteChildren {
+  AppLearnRoute: typeof AppLearnRouteWithChildren
+  AppIndexRoute: typeof AppIndexRoute
+  AppLessonLessonIdRoute: typeof AppLessonLessonIdRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppLearnRoute: AppLearnRouteWithChildren,
+  AppIndexRoute: AppIndexRoute,
+  AppLessonLessonIdRoute: AppLessonLessonIdRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AppRoute: AppRoute,
+  AppRoute: AppRouteWithChildren,
   ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
   OnboardingRoute: OnboardingRoute,
