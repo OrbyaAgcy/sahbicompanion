@@ -10,10 +10,10 @@ export const Route = createFileRoute("/app/practice")({
 });
 
 const CARDS = [
-  { to: "/app/practice/vocabulary" as const, icon: BookMarked, title: "Vocabulaire", desc: "Flashcards & répétition espacée", color: "forest" },
-  { to: "/app/practice/pronunciation" as const, icon: Mic, title: "Prononciation", desc: "Enregistre-toi, compare, améliore", color: "clay" },
-  { to: "/app/practice/alphabet" as const, icon: TypeOutline, title: "Alphabet", desc: "Lettres, formes et tracés", color: "gold" },
-  { to: "/app/practice/compare" as const, icon: GitCompare, title: "Comment le dit-on ?", desc: "Compare une expression entre dialectes", color: "night" },
+  { to: "/app/practice/vocabulary" as const, icon: BookMarked, title: "Vocabulaire", desc: "Flashcards & répétition espacée", iconClass: "bg-forest/10 text-forest" },
+  { to: "/app/practice/pronunciation" as const, icon: Mic, title: "Prononciation", desc: "Enregistre-toi, compare, améliore", iconClass: "bg-clay/10 text-clay" },
+  { to: "/app/practice/alphabet" as const, icon: TypeOutline, title: "Alphabet", desc: "Lettres, formes et tracés", iconClass: "bg-gold/20 text-clay" },
+  { to: "/app/practice/compare" as const, icon: GitCompare, title: "Comment le dit-on ?", desc: "Compare une expression entre dialectes", iconClass: "bg-night/10 text-night" },
 ];
 
 function PracticeIndex() {
@@ -25,7 +25,7 @@ function PracticeIndex() {
           const Icon = c.icon;
           return (
             <Link key={c.to} to={c.to} className="group rounded-3xl border border-night/5 bg-white p-6 hover:border-forest/40 transition-colors">
-              <div className={`size-12 rounded-2xl bg-${c.color}/10 text-${c.color} grid place-items-center mb-4`}>
+              <div className={`size-12 rounded-2xl ${c.iconClass} grid place-items-center mb-4`}>
                 <Icon className="size-5" />
               </div>
               <h3 className="font-bold">{c.title}</h3>

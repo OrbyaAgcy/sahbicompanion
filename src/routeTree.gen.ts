@@ -17,9 +17,20 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
+import { Route as AppProgressRouteImport } from './routes/app.progress'
+import { Route as AppProfileRouteImport } from './routes/app.profile'
+import { Route as AppPracticeRouteImport } from './routes/app.practice'
 import { Route as AppLearnRouteImport } from './routes/app.learn'
+import { Route as AppCompanionRouteImport } from './routes/app.companion'
+import { Route as AppAchievementsRouteImport } from './routes/app.achievements'
+import { Route as AppPracticeVocabularyRouteImport } from './routes/app.practice.vocabulary'
+import { Route as AppPracticePronunciationRouteImport } from './routes/app.practice.pronunciation'
+import { Route as AppPracticeCompareRouteImport } from './routes/app.practice.compare'
+import { Route as AppPracticeAlphabetRouteImport } from './routes/app.practice.alphabet'
 import { Route as AppLessonLessonIdRouteImport } from './routes/app.lesson.$lessonId'
 import { Route as AppLearnCourseIdRouteImport } from './routes/app.learn.$courseId'
+import { Route as AppCompanionConversationIdRouteImport } from './routes/app.companion.$conversationId'
 
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
@@ -61,10 +72,61 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProgressRoute = AppProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProfileRoute = AppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPracticeRoute = AppPracticeRouteImport.update({
+  id: '/practice',
+  path: '/practice',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppLearnRoute = AppLearnRouteImport.update({
   id: '/learn',
   path: '/learn',
   getParentRoute: () => AppRoute,
+} as any)
+const AppCompanionRoute = AppCompanionRouteImport.update({
+  id: '/companion',
+  path: '/companion',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAchievementsRoute = AppAchievementsRouteImport.update({
+  id: '/achievements',
+  path: '/achievements',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPracticeVocabularyRoute = AppPracticeVocabularyRouteImport.update({
+  id: '/vocabulary',
+  path: '/vocabulary',
+  getParentRoute: () => AppPracticeRoute,
+} as any)
+const AppPracticePronunciationRoute =
+  AppPracticePronunciationRouteImport.update({
+    id: '/pronunciation',
+    path: '/pronunciation',
+    getParentRoute: () => AppPracticeRoute,
+  } as any)
+const AppPracticeCompareRoute = AppPracticeCompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => AppPracticeRoute,
+} as any)
+const AppPracticeAlphabetRoute = AppPracticeAlphabetRouteImport.update({
+  id: '/alphabet',
+  path: '/alphabet',
+  getParentRoute: () => AppPracticeRoute,
 } as any)
 const AppLessonLessonIdRoute = AppLessonLessonIdRouteImport.update({
   id: '/lesson/$lessonId',
@@ -76,6 +138,12 @@ const AppLearnCourseIdRoute = AppLearnCourseIdRouteImport.update({
   path: '/$courseId',
   getParentRoute: () => AppLearnRoute,
 } as any)
+const AppCompanionConversationIdRoute =
+  AppCompanionConversationIdRouteImport.update({
+    id: '/$conversationId',
+    path: '/$conversationId',
+    getParentRoute: () => AppCompanionRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -85,10 +153,21 @@ export interface FileRoutesByFullPath {
   '/onboarding': typeof OnboardingRoute
   '/pricing': typeof PricingRoute
   '/signup': typeof SignupRoute
+  '/app/achievements': typeof AppAchievementsRoute
+  '/app/companion': typeof AppCompanionRouteWithChildren
   '/app/learn': typeof AppLearnRouteWithChildren
+  '/app/practice': typeof AppPracticeRouteWithChildren
+  '/app/profile': typeof AppProfileRoute
+  '/app/progress': typeof AppProgressRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/': typeof AppIndexRoute
+  '/app/companion/$conversationId': typeof AppCompanionConversationIdRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRoute
   '/app/lesson/$lessonId': typeof AppLessonLessonIdRoute
+  '/app/practice/alphabet': typeof AppPracticeAlphabetRoute
+  '/app/practice/compare': typeof AppPracticeCompareRoute
+  '/app/practice/pronunciation': typeof AppPracticePronunciationRoute
+  '/app/practice/vocabulary': typeof AppPracticeVocabularyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -97,10 +176,21 @@ export interface FileRoutesByTo {
   '/onboarding': typeof OnboardingRoute
   '/pricing': typeof PricingRoute
   '/signup': typeof SignupRoute
+  '/app/achievements': typeof AppAchievementsRoute
+  '/app/companion': typeof AppCompanionRouteWithChildren
   '/app/learn': typeof AppLearnRouteWithChildren
+  '/app/practice': typeof AppPracticeRouteWithChildren
+  '/app/profile': typeof AppProfileRoute
+  '/app/progress': typeof AppProgressRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app': typeof AppIndexRoute
+  '/app/companion/$conversationId': typeof AppCompanionConversationIdRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRoute
   '/app/lesson/$lessonId': typeof AppLessonLessonIdRoute
+  '/app/practice/alphabet': typeof AppPracticeAlphabetRoute
+  '/app/practice/compare': typeof AppPracticeCompareRoute
+  '/app/practice/pronunciation': typeof AppPracticePronunciationRoute
+  '/app/practice/vocabulary': typeof AppPracticeVocabularyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -111,10 +201,21 @@ export interface FileRoutesById {
   '/onboarding': typeof OnboardingRoute
   '/pricing': typeof PricingRoute
   '/signup': typeof SignupRoute
+  '/app/achievements': typeof AppAchievementsRoute
+  '/app/companion': typeof AppCompanionRouteWithChildren
   '/app/learn': typeof AppLearnRouteWithChildren
+  '/app/practice': typeof AppPracticeRouteWithChildren
+  '/app/profile': typeof AppProfileRoute
+  '/app/progress': typeof AppProgressRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/': typeof AppIndexRoute
+  '/app/companion/$conversationId': typeof AppCompanionConversationIdRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRoute
   '/app/lesson/$lessonId': typeof AppLessonLessonIdRoute
+  '/app/practice/alphabet': typeof AppPracticeAlphabetRoute
+  '/app/practice/compare': typeof AppPracticeCompareRoute
+  '/app/practice/pronunciation': typeof AppPracticePronunciationRoute
+  '/app/practice/vocabulary': typeof AppPracticeVocabularyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -126,10 +227,21 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/pricing'
     | '/signup'
+    | '/app/achievements'
+    | '/app/companion'
     | '/app/learn'
+    | '/app/practice'
+    | '/app/profile'
+    | '/app/progress'
+    | '/app/settings'
     | '/app/'
+    | '/app/companion/$conversationId'
     | '/app/learn/$courseId'
     | '/app/lesson/$lessonId'
+    | '/app/practice/alphabet'
+    | '/app/practice/compare'
+    | '/app/practice/pronunciation'
+    | '/app/practice/vocabulary'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -138,10 +250,21 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/pricing'
     | '/signup'
+    | '/app/achievements'
+    | '/app/companion'
     | '/app/learn'
+    | '/app/practice'
+    | '/app/profile'
+    | '/app/progress'
+    | '/app/settings'
     | '/app'
+    | '/app/companion/$conversationId'
     | '/app/learn/$courseId'
     | '/app/lesson/$lessonId'
+    | '/app/practice/alphabet'
+    | '/app/practice/compare'
+    | '/app/practice/pronunciation'
+    | '/app/practice/vocabulary'
   id:
     | '__root__'
     | '/'
@@ -151,10 +274,21 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/pricing'
     | '/signup'
+    | '/app/achievements'
+    | '/app/companion'
     | '/app/learn'
+    | '/app/practice'
+    | '/app/profile'
+    | '/app/progress'
+    | '/app/settings'
     | '/app/'
+    | '/app/companion/$conversationId'
     | '/app/learn/$courseId'
     | '/app/lesson/$lessonId'
+    | '/app/practice/alphabet'
+    | '/app/practice/compare'
+    | '/app/practice/pronunciation'
+    | '/app/practice/vocabulary'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -225,12 +359,82 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/progress': {
+      id: '/app/progress'
+      path: '/progress'
+      fullPath: '/app/progress'
+      preLoaderRoute: typeof AppProgressRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/profile': {
+      id: '/app/profile'
+      path: '/profile'
+      fullPath: '/app/profile'
+      preLoaderRoute: typeof AppProfileRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/practice': {
+      id: '/app/practice'
+      path: '/practice'
+      fullPath: '/app/practice'
+      preLoaderRoute: typeof AppPracticeRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/learn': {
       id: '/app/learn'
       path: '/learn'
       fullPath: '/app/learn'
       preLoaderRoute: typeof AppLearnRouteImport
       parentRoute: typeof AppRoute
+    }
+    '/app/companion': {
+      id: '/app/companion'
+      path: '/companion'
+      fullPath: '/app/companion'
+      preLoaderRoute: typeof AppCompanionRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/achievements': {
+      id: '/app/achievements'
+      path: '/achievements'
+      fullPath: '/app/achievements'
+      preLoaderRoute: typeof AppAchievementsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/practice/vocabulary': {
+      id: '/app/practice/vocabulary'
+      path: '/vocabulary'
+      fullPath: '/app/practice/vocabulary'
+      preLoaderRoute: typeof AppPracticeVocabularyRouteImport
+      parentRoute: typeof AppPracticeRoute
+    }
+    '/app/practice/pronunciation': {
+      id: '/app/practice/pronunciation'
+      path: '/pronunciation'
+      fullPath: '/app/practice/pronunciation'
+      preLoaderRoute: typeof AppPracticePronunciationRouteImport
+      parentRoute: typeof AppPracticeRoute
+    }
+    '/app/practice/compare': {
+      id: '/app/practice/compare'
+      path: '/compare'
+      fullPath: '/app/practice/compare'
+      preLoaderRoute: typeof AppPracticeCompareRouteImport
+      parentRoute: typeof AppPracticeRoute
+    }
+    '/app/practice/alphabet': {
+      id: '/app/practice/alphabet'
+      path: '/alphabet'
+      fullPath: '/app/practice/alphabet'
+      preLoaderRoute: typeof AppPracticeAlphabetRouteImport
+      parentRoute: typeof AppPracticeRoute
     }
     '/app/lesson/$lessonId': {
       id: '/app/lesson/$lessonId'
@@ -246,8 +450,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLearnCourseIdRouteImport
       parentRoute: typeof AppLearnRoute
     }
+    '/app/companion/$conversationId': {
+      id: '/app/companion/$conversationId'
+      path: '/$conversationId'
+      fullPath: '/app/companion/$conversationId'
+      preLoaderRoute: typeof AppCompanionConversationIdRouteImport
+      parentRoute: typeof AppCompanionRoute
+    }
   }
 }
+
+interface AppCompanionRouteChildren {
+  AppCompanionConversationIdRoute: typeof AppCompanionConversationIdRoute
+}
+
+const AppCompanionRouteChildren: AppCompanionRouteChildren = {
+  AppCompanionConversationIdRoute: AppCompanionConversationIdRoute,
+}
+
+const AppCompanionRouteWithChildren = AppCompanionRoute._addFileChildren(
+  AppCompanionRouteChildren,
+)
 
 interface AppLearnRouteChildren {
   AppLearnCourseIdRoute: typeof AppLearnCourseIdRoute
@@ -261,14 +484,44 @@ const AppLearnRouteWithChildren = AppLearnRoute._addFileChildren(
   AppLearnRouteChildren,
 )
 
+interface AppPracticeRouteChildren {
+  AppPracticeAlphabetRoute: typeof AppPracticeAlphabetRoute
+  AppPracticeCompareRoute: typeof AppPracticeCompareRoute
+  AppPracticePronunciationRoute: typeof AppPracticePronunciationRoute
+  AppPracticeVocabularyRoute: typeof AppPracticeVocabularyRoute
+}
+
+const AppPracticeRouteChildren: AppPracticeRouteChildren = {
+  AppPracticeAlphabetRoute: AppPracticeAlphabetRoute,
+  AppPracticeCompareRoute: AppPracticeCompareRoute,
+  AppPracticePronunciationRoute: AppPracticePronunciationRoute,
+  AppPracticeVocabularyRoute: AppPracticeVocabularyRoute,
+}
+
+const AppPracticeRouteWithChildren = AppPracticeRoute._addFileChildren(
+  AppPracticeRouteChildren,
+)
+
 interface AppRouteChildren {
+  AppAchievementsRoute: typeof AppAchievementsRoute
+  AppCompanionRoute: typeof AppCompanionRouteWithChildren
   AppLearnRoute: typeof AppLearnRouteWithChildren
+  AppPracticeRoute: typeof AppPracticeRouteWithChildren
+  AppProfileRoute: typeof AppProfileRoute
+  AppProgressRoute: typeof AppProgressRoute
+  AppSettingsRoute: typeof AppSettingsRoute
   AppIndexRoute: typeof AppIndexRoute
   AppLessonLessonIdRoute: typeof AppLessonLessonIdRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAchievementsRoute: AppAchievementsRoute,
+  AppCompanionRoute: AppCompanionRouteWithChildren,
   AppLearnRoute: AppLearnRouteWithChildren,
+  AppPracticeRoute: AppPracticeRouteWithChildren,
+  AppProfileRoute: AppProfileRoute,
+  AppProgressRoute: AppProgressRoute,
+  AppSettingsRoute: AppSettingsRoute,
   AppIndexRoute: AppIndexRoute,
   AppLessonLessonIdRoute: AppLessonLessonIdRoute,
 }
