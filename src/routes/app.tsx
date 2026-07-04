@@ -1,4 +1,4 @@
-import { createFileRoute, redirect, isRedirect } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { AppShell } from "@/components/sahbi/AppShell";
 
 export const Route = createFileRoute("/app")({
