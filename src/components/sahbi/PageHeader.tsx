@@ -13,10 +13,10 @@ export function PageHeader({
     <header className="mb-8 flex flex-wrap items-end justify-between gap-4">
       <div className="min-w-0">
         {eyebrow && (
-          <p className="font-mono text-[10px] uppercase tracking-widest text-clay mb-1">{eyebrow}</p>
+          <p className="text-[12px] font-semibold tracking-tight text-clay mb-1">{eyebrow}</p>
         )}
-        <h1 className="text-3xl font-extrabold tracking-tight text-balance">{title}</h1>
-        {subtitle && <p className="mt-2 text-sm text-night/60 max-w-xl">{subtitle}</p>}
+        <h1 className="text-[28px] font-bold tracking-[-0.03em] text-balance leading-tight">{title}</h1>
+        {subtitle && <p className="mt-2 text-[15px] text-night/55 max-w-xl leading-snug">{subtitle}</p>}
       </div>
       {action}
     </header>

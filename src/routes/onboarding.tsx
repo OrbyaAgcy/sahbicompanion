@@ -7,6 +7,7 @@ import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/onboarding")({
+  ssr: false,
   head: () => ({ meta: [{ title: "Créons ton parcours — Sahbi" }] }),
   component: Onboarding,
 });

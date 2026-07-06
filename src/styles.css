@@ -64,13 +64,28 @@
   --color-forest: var(--forest);
   --color-clay: var(--clay);
   --color-gold: var(--gold);
-  --font-latin: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-latin: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-arabic: "Noto Sans Arabic", "IBM Plex Sans Arabic", "Amiri", serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
 }
 
 :root {
-  --radius: 0.625rem;
+  /* iOS default corner radius. Continuous "squircle" feel via generous radii. */
+  --radius: 0.875rem;
+  --radius-ios-sm: 10px;
+  --radius-ios-md: 14px;
+  --radius-ios-lg: 22px;
+  --radius-ios-xl: 28px;
+
+  /* iOS materials & shadows */
+  --ios-material: color-mix(in oklab, white 72%, transparent);
+  --ios-material-thick: color-mix(in oklab, white 86%, transparent);
+  --ios-hairline: color-mix(in oklab, oklch(0 0 0) 12%, transparent);
+  --ios-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.04), 0 1px 1px rgb(0 0 0 / 0.03);
+  --ios-shadow-md: 0 6px 16px -6px rgb(0 0 0 / 0.10), 0 2px 4px rgb(0 0 0 / 0.05);
+  --ios-shadow-lg: 0 24px 40px -20px rgb(0 0 0 / 0.18), 0 4px 12px rgb(0 0 0 / 0.06);
+
   /* Sahbi brand palette */
   --ivory: oklch(0.985 0.006 90);
   --night: oklch(0.19 0.03 260);
@@ -113,6 +128,12 @@
 }
 
 .dark {
+  --ios-material: color-mix(in oklab, oklch(0.22 0.03 260) 70%, transparent);
+  --ios-material-thick: color-mix(in oklab, oklch(0.22 0.03 260) 88%, transparent);
+  --ios-hairline: color-mix(in oklab, white 12%, transparent);
+  --ios-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.5);
+  --ios-shadow-md: 0 6px 16px -6px rgb(0 0 0 / 0.55);
+  --ios-shadow-lg: 0 24px 40px -20px rgb(0 0 0 / 0.7);
   --ivory: oklch(0.19 0.03 260);
   --night: oklch(0.97 0.01 90);
   --forest: oklch(0.62 0.11 155);
@@ -162,10 +183,19 @@
     color: var(--color-foreground);
     font-family: var(--font-latin);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    letter-spacing: -0.011em;
+    font-feature-settings: "cv11", "ss01", "ss03";
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.022em;
   }
 
   .font-arabic {
     font-family: var(--font-arabic);
+    letter-spacing: 0;
   }
   .font-mono {
     font-family: var(--font-mono);
@@ -175,6 +205,61 @@
     font-family: var(--font-arabic);
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/* iOS / SwiftUI look & feel utilities                                        */
+/* -------------------------------------------------------------------------- */
+
+@utility ios-card {
+  background: var(--card);
+  border-radius: var(--radius-ios-lg);
+  box-shadow: var(--ios-shadow-sm);
+  border: 1px solid var(--ios-hairline);
+}
+
+@utility ios-card-lg {
+  background: var(--card);
+  border-radius: var(--radius-ios-xl);
+  box-shadow: var(--ios-shadow-md);
+  border: 1px solid var(--ios-hairline);
+}
+
+@utility ios-material {
+  background: var(--ios-material);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--ios-hairline);
+}
+
+@utility ios-material-thick {
+  background: var(--ios-material-thick);
+  backdrop-filter: blur(30px) saturate(180%);
+  border: 1px solid var(--ios-hairline);
+}
+
+@utility ios-pressable {
+  transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 180ms ease;
+}
+.ios-pressable:active {
+  transform: scale(0.96);
+  opacity: 0.8;
+}
+
+@utility ios-list {
+  background: var(--card);
+  border-radius: var(--radius-ios-md);
+  border: 1px solid var(--ios-hairline);
+  overflow: hidden;
+}
+.ios-list > * + * {
+  border-top: 1px solid var(--ios-hairline);
+}
+
+@keyframes ios-spring-in {
+  0%   { opacity: 0; transform: translateY(8px) scale(0.98); }
+  60%  { opacity: 1; transform: translateY(-2px) scale(1.01); }
+  100% { opacity: 1; transform: translateY(0)    scale(1); }
+}
+.animate-ios-in { animation: ios-spring-in 480ms cubic-bezier(0.34, 1.56, 0.64, 1) both; }
 
 @keyframes fadeInSlide {
   from { opacity: 0; transform: translateY(12px); }
