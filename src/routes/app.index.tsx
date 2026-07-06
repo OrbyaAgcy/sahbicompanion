@@ -19,58 +19,58 @@ function Home() {
   const goalPct = Math.min(100, Math.round((profile.minutesToday / profile.dailyMinutes) * 100));
 
   return (
-    <main className="mx-auto max-w-2xl px-6 pt-10 pb-16">
-      <header className="flex items-end justify-between animate-fade-in">
+    <main className="mx-auto max-w-2xl px-5 pt-12 pb-16">
+      <header className="flex items-end justify-between animate-ios-in">
         <div className="min-w-0">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-clay mb-1">
+          <p className="text-[13px] font-semibold text-clay/80 mb-1 capitalize">
             {new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })}
           </p>
-          <h1 className="text-3xl font-extrabold tracking-tight truncate">Marhaba, {profile.firstName}.</h1>
+          <h1 className="text-[34px] font-bold tracking-[-0.03em] truncate leading-tight">Marhaba, {profile.firstName}.</h1>
         </div>
-        <div className="flex items-center gap-1.5 rounded-full bg-forest px-3 py-1.5 text-xs font-bold text-ivory shrink-0">
-          <Flame className="size-3.5 text-gold" /> {profile.streak} jours
+        <div className="flex items-center gap-1.5 rounded-full ios-material px-3 py-1.5 text-[13px] font-semibold text-forest shrink-0">
+          <Flame className="size-3.5 text-clay" fill="currentColor" /> {profile.streak}
         </div>
       </header>
 
-      <section className="mt-8 animate-fade-in">
-        <div className="relative overflow-hidden rounded-3xl bg-forest p-6 text-ivory">
+      <section className="mt-7 animate-ios-in">
+        <div className="relative overflow-hidden rounded-[28px] bg-forest p-6 text-ivory shadow-[var(--ios-shadow-lg)]">
           <div className="absolute -right-4 -top-8 select-none font-arabic text-9xl font-bold text-ivory/5">ص</div>
-          <p className="font-mono text-[10px] uppercase tracking-widest text-gold mb-2">
+          <p className="text-[12px] font-semibold text-gold mb-2 tracking-tight">
             Niveau 2 · {course.title}
           </p>
-          <h2 className="text-2xl font-bold text-balance">{currentLesson.title}</h2>
-          <p className="mt-2 text-sm text-ivory/70">{currentLesson.description}</p>
+          <h2 className="text-[22px] font-semibold tracking-[-0.02em] text-balance">{currentLesson.title}</h2>
+          <p className="mt-2 text-[14px] text-ivory/70 leading-snug">{currentLesson.description}</p>
           <Link
             to="/app/lesson/$lessonId"
             params={{ lessonId: currentLesson.id }}
-            className="mt-6 flex w-full items-center justify-between rounded-xl bg-ivory px-4 py-3.5 text-sm font-bold text-forest"
+            className="ios-pressable mt-6 flex w-full items-center justify-between rounded-[14px] bg-ivory px-4 py-3.5 text-[15px] font-semibold text-forest"
           >
             Continuer ma leçon <ArrowRight className="size-4" />
           </Link>
         </div>
       </section>
 
-      <section className="mt-8 grid grid-cols-2 gap-3">
-        <div className="rounded-2xl border border-night/5 bg-white p-4 flex items-center gap-3">
+      <section className="mt-6 grid grid-cols-2 gap-3">
+        <div className="ios-card p-4 flex items-center gap-3">
           <ProgressRing value={goalPct} size={54} stroke={5}>
-            <span className="text-xs font-extrabold">{goalPct}%</span>
+            <span className="text-[11px] font-bold">{goalPct}%</span>
           </ProgressRing>
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-night/40">Objectif</p>
-            <p className="text-sm font-bold">
+            <p className="text-[12px] font-medium text-night/45">Objectif</p>
+            <p className="text-[15px] font-semibold tracking-tight">
               {profile.minutesToday}/{profile.dailyMinutes} min
             </p>
           </div>
         </div>
-        <div className="rounded-2xl border border-night/5 bg-white p-4">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-night/40">Cette semaine</p>
-          <p className="mt-1 text-2xl font-extrabold">{profile.minutesWeek} min</p>
-          <p className="text-xs text-night/50">{profile.wordsLearned} mots appris</p>
+        <div className="ios-card p-4">
+          <p className="text-[12px] font-medium text-night/45">Cette semaine</p>
+          <p className="mt-1 text-[24px] font-bold tracking-tight">{profile.minutesWeek} min</p>
+          <p className="text-[12px] text-night/50">{profile.wordsLearned} mots appris</p>
         </div>
       </section>
 
-      <section className="mt-10">
-        <h3 className="font-mono text-[10px] uppercase tracking-widest text-night/40 mb-4">Mission du jour</h3>
+      <section className="mt-9">
+        <h3 className="text-[13px] font-semibold text-night/50 mb-3 px-1">Mission du jour</h3>
         <div className="space-y-3">
           <MissionRow label="Apprendre 5 mots" current={2} total={5} done={false} />
           <MissionRow label="Terminer une leçon" current={0} total={1} done={false} />
@@ -78,9 +78,9 @@ function Home() {
         </div>
       </section>
 
-      <section className="mt-10">
-        <h3 className="font-mono text-[10px] uppercase tracking-widest text-night/40 mb-4">Tes progrès cette semaine</h3>
-        <div className="rounded-3xl border border-night/5 bg-white p-4 h-40">
+      <section className="mt-9">
+        <h3 className="text-[13px] font-semibold text-night/50 mb-3 px-1">Tes progrès cette semaine</h3>
+        <div className="ios-card p-4 h-40">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={WEEKLY_ACTIVITY} margin={{ top: 8, right: 4, bottom: 0, left: -20 }}>
               <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: "#64748b" }} />
@@ -95,25 +95,25 @@ function Home() {
         </div>
       </section>
 
-      <section className="mt-10">
-        <h3 className="font-mono text-[10px] uppercase tracking-widest text-night/40 mb-4">Expression du jour</h3>
+      <section className="mt-9">
+        <h3 className="text-[13px] font-semibold text-night/50 mb-3 px-1">Expression du jour</h3>
         <ExpressionCard expr={expression} showTranslit={profile.transliteration} />
       </section>
 
-      <section className="mt-10">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="font-mono text-[10px] uppercase tracking-widest text-night/40">À réviser aujourd'hui</h3>
-          <Link to="/app/practice/vocabulary" className="text-xs font-bold text-forest">Voir tout →</Link>
+      <section className="mt-9">
+        <div className="flex items-center justify-between mb-3 px-1">
+          <h3 className="text-[13px] font-semibold text-night/50">À réviser aujourd'hui</h3>
+          <Link to="/app/practice/vocabulary" className="text-[13px] font-semibold text-forest">Voir tout</Link>
         </div>
-        <div className="rounded-3xl border border-night/5 bg-white p-6 flex items-center gap-4">
-          <div className="size-14 rounded-2xl bg-clay/10 grid place-items-center text-clay">
+        <div className="ios-card-lg p-5 flex items-center gap-4">
+          <div className="size-14 rounded-[16px] bg-clay/10 grid place-items-center text-clay">
             <ArabicText size="md" className="text-clay">شكرا</ArabicText>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-bold">6 mots en attente</p>
-            <p className="text-xs text-night/50">Répétition espacée · 3 min</p>
+            <p className="text-[15px] font-semibold tracking-tight">6 mots en attente</p>
+            <p className="text-[12px] text-night/50">Répétition espacée · 3 min</p>
           </div>
-          <Link to="/app/practice/vocabulary" className="rounded-full bg-forest px-4 py-2 text-xs font-bold text-ivory">
+          <Link to="/app/practice/vocabulary" className="ios-pressable rounded-full bg-forest px-4 py-2 text-[13px] font-semibold text-ivory">
             Réviser
           </Link>
         </div>
@@ -124,15 +124,15 @@ function Home() {
 
 function MissionRow({ label, current, total, done }: { label: string; current: number; total: number; done: boolean }) {
   return (
-    <div className="flex items-center justify-between rounded-2xl border border-night/5 bg-white p-4">
+    <div className="ios-card flex items-center justify-between p-4">
       <div className="flex items-center gap-3 min-w-0">
-        <div className="size-9 rounded-full border-2 border-forest/20 grid place-items-center shrink-0">
+        <div className="size-8 rounded-full border-[1.5px] border-forest/25 grid place-items-center shrink-0">
           {done && <div className="size-2 rounded-full bg-forest" />}
           {!done && current > 0 && <div className="size-2 rounded-full bg-forest/40" />}
         </div>
-        <span className="text-sm font-semibold truncate">{label}</span>
+        <span className="text-[15px] font-medium truncate">{label}</span>
       </div>
-      <span className="font-mono text-xs text-night/40 shrink-0">{current}/{total}</span>
+      <span className="text-[13px] font-medium text-night/40 shrink-0 tabular-nums">{current}/{total}</span>
     </div>
   );
 }
