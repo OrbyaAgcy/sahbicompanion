@@ -63,7 +63,7 @@ function Pricing() {
               className={
                 p.featured
                   ? "rounded-3xl bg-forest p-8 text-ivory ring-4 ring-gold/30"
-                  : "rounded-3xl border border-night/10 bg-white p-8"
+                  : "ios-card-lg p-8"
               }
             >
               <div className="flex items-baseline justify-between">

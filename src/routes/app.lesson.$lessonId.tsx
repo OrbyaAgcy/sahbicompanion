@@ -62,7 +62,7 @@ function LessonPage() {
           </button>
           <button
             onClick={() => { setI(0); setCorrect(0); setDone(false); }}
-            className="w-full rounded-xl border border-night/15 bg-white py-3.5 text-sm font-bold"
+            className="ios-pressable w-full rounded-xl border border-night/15 bg-card py-3.5 text-sm font-bold"
           >
             Revoir mes erreurs
           </button>
@@ -91,7 +91,7 @@ function LessonPage() {
 
 function StatBox({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-night/10 bg-white p-4">
+    <div className="ios-card p-4">
       <p className="font-mono text-[10px] uppercase tracking-widest text-night/40">{label}</p>
       <p className="mt-1 text-2xl font-extrabold">{value}</p>
     </div>
@@ -119,7 +119,7 @@ function StepRenderer({ step, onDone }: { step: LessonStep; onDone: (correct?: b
     return (
       <div className="animate-fade-in text-center">
         <p className="font-mono text-[10px] uppercase tracking-widest text-clay mb-6">Nouveau mot</p>
-        <div className="rounded-3xl border border-clay/10 bg-clay/5 p-8">
+        <div className="rounded-[28px] border border-clay/10 bg-clay/5 p-8 shadow-[var(--ios-shadow-sm)]">
           <ArabicText size="2xl" className="font-bold block">{step.arabic}</ArabicText>
           <p className="mt-4 font-mono text-sm italic text-night/50">/ {step.translit} /</p>
           <p className="mt-2 text-xl font-bold">{step.translation}</p>
@@ -142,7 +142,7 @@ function StepRenderer({ step, onDone }: { step: LessonStep; onDone: (correct?: b
           {step.type === "choice" ? step.prompt : "Quelle prononciation entends-tu ?"}
         </h2>
         {step.arabic && (
-          <div className="mt-6 rounded-3xl border border-night/10 bg-white p-6 flex items-center justify-between">
+          <div className="mt-6 ios-card-lg p-6 flex items-center justify-between">
             <ArabicText size="xl" className="font-bold">{step.arabic}</ArabicText>
             <AudioButton />
           </div>
@@ -158,8 +158,8 @@ function StepRenderer({ step, onDone }: { step: LessonStep; onDone: (correct?: b
                 disabled={revealed}
                 onClick={() => setPicked(oi)}
                 className={cn(
-                  "w-full rounded-2xl border p-4 text-left font-semibold text-sm transition-all",
-                  !revealed && "border-night/10 bg-white hover:border-forest/40",
+                  "ios-pressable w-full rounded-2xl border p-4 text-left font-semibold text-sm transition-all",
+                  !revealed && "border-[var(--ios-hairline)] bg-card hover:border-forest/40",
                   revealed && isCorrect && "border-forest bg-forest/10 text-forest",
                   revealed && isPicked && !isCorrect && "border-clay bg-clay/10 text-clay",
                 )}
