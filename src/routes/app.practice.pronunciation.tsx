@@ -18,7 +18,7 @@ function Pronunciation() {
       <Link to="/app/practice" className="font-mono text-[11px] uppercase tracking-widest text-night/40">← Pratiquer</Link>
       <PageHeader eyebrow="Prononciation" title="Trouve ta voix." subtitle="Répète après le natif, on analyse ta prononciation." />
 
-      <div className="rounded-3xl border border-night/10 bg-white p-8 text-center">
+      <div className="ios-card-lg p-8 text-center">
         <p className="font-mono text-[10px] uppercase tracking-widest text-clay">Phrase à répéter</p>
         <div className="mt-4"><ArabicText size="xl" className="font-bold">مَرْحَبًا، كَيْفَ حَالُك؟</ArabicText></div>
         <p className="mt-3 font-mono text-xs italic text-night/50">/ marḥaban, kayfa ḥāluk? /</p>

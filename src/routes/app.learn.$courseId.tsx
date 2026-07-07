@@ -34,7 +34,7 @@ function ModuleView() {
             key={l.id}
             to="/app/lesson/$lessonId"
             params={{ lessonId: l.id }}
-            className="flex items-center justify-between rounded-2xl border border-night/5 bg-white p-4 hover:border-forest/40 transition-colors"
+            className="flex items-center justify-between ios-card ios-pressable p-4 hover:shadow-[var(--ios-shadow-md)] transition-shadow"
           >
             <div className="flex items-center gap-4 min-w-0">
               <div className="size-10 rounded-full bg-forest/10 text-forest grid place-items-center font-bold">

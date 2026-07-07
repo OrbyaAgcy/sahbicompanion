@@ -38,7 +38,7 @@ function Alphabet() {
         ))}
       </div>
 
-      <div className="mt-10 rounded-2xl border border-night/10 bg-white p-4">
+      <div className="mt-10 ios-card p-4">
         <p className="font-mono text-[10px] uppercase tracking-widest text-clay mb-2">Paires proches</p>
         <p className="text-sm">ب / ت / ث · ج / ح / خ · د / ذ · ص / ض · ط / ظ · ع / غ · ف / ق</p>
       </div>

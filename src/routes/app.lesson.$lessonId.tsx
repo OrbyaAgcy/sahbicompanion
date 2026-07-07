@@ -72,7 +72,7 @@ function LessonPage() {
   }
 
   return (
-    <div className="min-h-screen bg-ivory pb-16">
+    <div className="min-h-screen sahbi-bg pb-16">
       <header className="mx-auto max-w-md px-6 pt-8 flex items-center gap-4">
         <button onClick={() => navigate({ to: "/app/learn" })} className="text-night/60">
           <X className="size-5" />

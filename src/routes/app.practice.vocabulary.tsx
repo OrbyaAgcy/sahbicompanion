@@ -30,7 +30,7 @@ function VocabPage() {
 
       <button
         onClick={() => setFlipped(!flipped)}
-        className="relative w-full min-h-[280px] rounded-3xl border border-night/10 bg-white p-8 text-center flex flex-col justify-center items-center gap-4"
+        className="relative w-full min-h-[280px] ios-card-lg ios-pressable p-8 text-center flex flex-col justify-center items-center gap-4"
       >
         <div className="absolute top-4 left-4"><VariantChip variant={word.variant} /></div>
         <div className="absolute top-4 right-4"><AudioButton size="sm" /></div>
@@ -59,7 +59,7 @@ function VocabPage() {
         <h3 className="font-mono text-[10px] uppercase tracking-widest text-night/40 mb-4">Ta bibliothèque</h3>
         <div className="space-y-2">
           {words.slice(0, 6).map((w) => (
-            <div key={w.id} className="flex items-center justify-between rounded-2xl border border-night/5 bg-white p-3">
+            <div key={w.id} className="flex items-center justify-between ios-card p-3">
               <div className="flex items-center gap-3 min-w-0">
                 <ArabicText size="md" className="text-clay shrink-0">{w.arabic}</ArabicText>
                 <div className="min-w-0">

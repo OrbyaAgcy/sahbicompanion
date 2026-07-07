@@ -35,8 +35,10 @@ function LearnIndex() {
                 key={m.id}
                 to="/app/learn/$courseId"
                 params={{ courseId: m.id }}
-                className={`relative flex items-center gap-4 rounded-3xl border p-4 ${
-                  locked ? "border-night/5 bg-night/[0.02] opacity-60 pointer-events-none" : "border-night/5 bg-white"
+                className={`relative flex items-center gap-4 p-4 ${
+                  locked
+                    ? "rounded-3xl border border-night/5 bg-night/[0.02] opacity-60 pointer-events-none"
+                    : "ios-card ios-pressable"
                 }`}
               >
                 <div className="shrink-0 relative z-10 bg-ivory rounded-full">

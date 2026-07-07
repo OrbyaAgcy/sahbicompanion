@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
 
 function Landing() {
   return (
-    <div className="min-h-screen bg-ivory text-night">
+    <div className="min-h-screen sahbi-bg text-night">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 pt-8">
         <div className="flex items-baseline gap-2">
           <span className="text-2xl font-extrabold text-forest">Sahbi</span>
@@ -60,7 +60,7 @@ function Landing() {
                 </p>
               </div>
             </div>
-            <div className="absolute -bottom-6 -left-6 hidden sm:block rounded-2xl bg-white border border-night/5 p-4 shadow-xl">
+            <div className="absolute -bottom-6 -left-6 hidden sm:block ios-card p-4">
               <p className="font-mono text-[10px] uppercase tracking-widest text-clay">Série</p>
               <p className="mt-1 text-2xl font-extrabold">8 jours</p>
             </div>
@@ -73,7 +73,7 @@ function Landing() {
             { t: "Compagnon IA", d: "Discute en arabe adapté à ton niveau. Corrections douces, pas d'interruptions." },
             { t: "Répétition espacée", d: "Ton vocabulaire revient au bon moment. Retiens vraiment, pas juste pour la leçon." },
           ].map((f) => (
-            <div key={f.t} className="rounded-3xl border border-night/5 bg-white p-6">
+            <div key={f.t} className="ios-card-lg p-6">
               <h3 className="text-lg font-bold">{f.t}</h3>
               <p className="mt-2 text-sm text-night/60 leading-relaxed">{f.d}</p>
             </div>

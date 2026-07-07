@@ -10,8 +10,8 @@ export const Route = createFileRoute("/app/achievements")({
         {ACHIEVEMENTS.map((a) => (
           <div
             key={a.slug}
-            className={`rounded-3xl border p-5 text-center ${
-              a.unlocked ? "border-gold/40 bg-gold/10" : "border-night/10 bg-white opacity-60"
+            className={`p-5 text-center ${
+              a.unlocked ? "rounded-3xl border border-gold/40 bg-gold/10" : "ios-card opacity-60"
             }`}
           >
             <div className="text-3xl">{a.icon}</div>

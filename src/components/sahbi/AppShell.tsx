@@ -15,7 +15,7 @@ export function AppShell() {
   const isActive = (to: string) => (to === "/app" ? pathname === "/app" : pathname.startsWith(to));
 
   return (
-    <div className="min-h-screen bg-ivory text-night selection:bg-gold/20">
+    <div className="min-h-screen sahbi-bg text-night selection:bg-gold/20">
       <aside className="hidden lg:flex fixed left-0 top-0 h-full w-64 flex-col border-r border-[var(--ios-hairline)] bg-white/70 backdrop-blur-2xl p-6 z-40">
         <Link to="/app" className="mb-10 flex items-baseline gap-2">
           <span className="text-2xl font-bold tracking-tight text-forest">Sahbi</span>
@@ -41,7 +41,7 @@ export function AppShell() {
         </nav>
         <div className="mt-auto rounded-[22px] border border-gold/30 bg-gold/10 p-4">
           <p className="font-mono text-[10px] uppercase tracking-widest text-clay">Premium</p>
-          <p className="mt-2 text-[13px] leading-snug text-night/80">Débloque tous les dialectes et le compagnon IA.</p>
+          <p className="mt-2 text-[13px] leading-snug text-night/80">Compagnon IA illimité, prononciation avancée et statistiques poussées.</p>
           <Link to="/pricing" className="mt-3 inline-block text-xs font-bold text-forest underline">
             Découvrir →
           </Link>

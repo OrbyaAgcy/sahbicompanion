@@ -24,7 +24,7 @@ function CompanionIndex() {
             key={s.id}
             to="/app/companion/$conversationId"
             params={{ conversationId: s.id }}
-            className="rounded-3xl border border-night/5 bg-white p-5 hover:border-forest/40 transition-colors"
+            className="ios-card ios-pressable p-5 hover:shadow-[var(--ios-shadow-md)] transition-shadow"
           >
             <p className="font-mono text-[10px] uppercase tracking-widest text-clay">Scénario</p>
             <h3 className="mt-2 font-bold">{s.title}</h3>
