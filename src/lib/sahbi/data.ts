@@ -4,6 +4,7 @@ import type {
   Course,
   DialectComparison,
   Expression,
+  VariantSlug,
   Vocab,
 } from "./types";
 
@@ -85,6 +86,20 @@ export const VARIANTS: ArabicVariant[] = [
 export const VARIANT_LABEL: Record<string, string> = Object.fromEntries(
   VARIANTS.map((v) => [v.slug, v.name]),
 );
+
+// BCP-47 locale used for speech synthesis (Web Speech API). The browser
+// falls back to its closest available Arabic voice when an exact locale
+// isn't installed, so this is best-effort rather than a strict guarantee.
+export const VARIANT_LANG: Record<VariantSlug, string> = {
+  fusha: "ar-SA",
+  libanais: "ar-LB",
+  darija: "ar-MA",
+  egyptien: "ar-EG",
+  algerien: "ar-DZ",
+  tunisien: "ar-TN",
+  golfe: "ar-AE",
+  classique: "ar-SA",
+};
 
 export const OBJECTIVES = [
   "Parler avec ma famille",

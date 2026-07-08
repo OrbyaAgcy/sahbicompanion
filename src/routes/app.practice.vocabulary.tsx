@@ -33,7 +33,7 @@ function VocabPage() {
         className="relative w-full min-h-[280px] ios-card-lg ios-pressable p-8 text-center flex flex-col justify-center items-center gap-4"
       >
         <div className="absolute top-4 left-4"><VariantChip variant={word.variant} /></div>
-        <div className="absolute top-4 right-4"><AudioButton size="sm" /></div>
+        <div className="absolute top-4 right-4"><AudioButton size="sm" text={word.arabic} variant={word.variant} /></div>
         {flipped ? (
           <>
             <p className="font-mono text-xs text-night/50">/ {word.translit} /</p>

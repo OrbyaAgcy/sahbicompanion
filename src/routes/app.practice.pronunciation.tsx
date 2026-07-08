@@ -23,7 +23,7 @@ function Pronunciation() {
         <div className="mt-4"><ArabicText size="xl" className="font-bold">مَرْحَبًا، كَيْفَ حَالُك؟</ArabicText></div>
         <p className="mt-3 font-mono text-xs italic text-night/50">/ marḥaban, kayfa ḥāluk? /</p>
         <p className="mt-1 text-sm">Bonjour, comment vas-tu ?</p>
-        <div className="mt-6 flex justify-center"><AudioButton size="lg" /></div>
+        <div className="mt-6 flex justify-center"><AudioButton size="lg" text="مَرْحَبًا، كَيْفَ حَالُك؟" variant="fusha" /></div>
       </div>
 
       <div className="mt-8 grid place-items-center">

@@ -112,7 +112,7 @@ function Chat() {
                   </>
                 )}
                 <div className="mt-3 flex items-center gap-2">
-                  <AudioButton size="sm" />
+                  <AudioButton size="sm" text={m.arabic} variant={profile.mainVariant} />
                   <button className="font-mono text-[10px] uppercase tracking-widest text-forest">Explique-moi</button>
                   {m.demo && (
                     <span className="flex items-center gap-1 font-mono text-[9px] uppercase tracking-widest text-gold">

@@ -123,7 +123,7 @@ function StepRenderer({ step, onDone }: { step: LessonStep; onDone: (correct?: b
           <ArabicText size="2xl" className="font-bold block">{step.arabic}</ArabicText>
           <p className="mt-4 font-mono text-sm italic text-night/50">/ {step.translit} /</p>
           <p className="mt-2 text-xl font-bold">{step.translation}</p>
-          <div className="mt-6 flex justify-center"><AudioButton /></div>
+          <div className="mt-6 flex justify-center"><AudioButton text={step.arabic} variant="fusha" /></div>
         </div>
         <button onClick={() => onDone(true)} className="mt-8 w-full rounded-xl bg-forest py-3.5 text-sm font-bold text-ivory">
           J'ai retenu
@@ -144,7 +144,7 @@ function StepRenderer({ step, onDone }: { step: LessonStep; onDone: (correct?: b
         {step.arabic && (
           <div className="mt-6 ios-card-lg p-6 flex items-center justify-between">
             <ArabicText size="xl" className="font-bold">{step.arabic}</ArabicText>
-            <AudioButton />
+            <AudioButton text={step.arabic} variant="fusha" />
           </div>
         )}
         <div className="mt-6 space-y-2">
@@ -187,9 +187,9 @@ function StepRenderer({ step, onDone }: { step: LessonStep; onDone: (correct?: b
       <div className="animate-fade-in">
         <p className="font-mono text-[10px] uppercase tracking-widest text-clay mb-2">Traduction</p>
         <h2 className="text-2xl font-extrabold tracking-tight">{step.prompt}</h2>
-        <div className="mt-6 rounded-3xl border border-night/10 bg-white p-6 flex items-center justify-between">
+        <div className="mt-6 ios-card-lg p-6 flex items-center justify-between">
           <ArabicText size="xl" className="font-bold">{step.arabic}</ArabicText>
-          <AudioButton />
+          <AudioButton text={step.arabic} variant="fusha" />
         </div>
         <input
           value={answer}
