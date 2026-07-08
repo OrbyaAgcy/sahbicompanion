@@ -62,7 +62,7 @@ function LessonPage() {
           </button>
           <button
             onClick={() => { setI(0); setCorrect(0); setDone(false); }}
-            className="w-full rounded-xl border border-night/15 bg-white py-3.5 text-sm font-bold"
+            className="ios-pressable w-full rounded-xl border border-night/15 bg-card py-3.5 text-sm font-bold"
           >
             Revoir mes erreurs
           </button>
@@ -72,7 +72,7 @@ function LessonPage() {
   }
 
   return (
-    <div className="min-h-screen bg-ivory pb-16">
+    <div className="min-h-screen sahbi-bg pb-16">
       <header className="mx-auto max-w-md px-6 pt-8 flex items-center gap-4">
         <button onClick={() => navigate({ to: "/app/learn" })} className="text-night/60">
           <X className="size-5" />
@@ -91,7 +91,7 @@ function LessonPage() {
 
 function StatBox({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-night/10 bg-white p-4">
+    <div className="ios-card p-4">
       <p className="font-mono text-[10px] uppercase tracking-widest text-night/40">{label}</p>
       <p className="mt-1 text-2xl font-extrabold">{value}</p>
     </div>
@@ -119,11 +119,11 @@ function StepRenderer({ step, onDone }: { step: LessonStep; onDone: (correct?: b
     return (
       <div className="animate-fade-in text-center">
         <p className="font-mono text-[10px] uppercase tracking-widest text-clay mb-6">Nouveau mot</p>
-        <div className="rounded-3xl border border-clay/10 bg-clay/5 p-8">
+        <div className="rounded-[28px] border border-clay/10 bg-clay/5 p-8 shadow-[var(--ios-shadow-sm)]">
           <ArabicText size="2xl" className="font-bold block">{step.arabic}</ArabicText>
           <p className="mt-4 font-mono text-sm italic text-night/50">/ {step.translit} /</p>
           <p className="mt-2 text-xl font-bold">{step.translation}</p>
-          <div className="mt-6 flex justify-center"><AudioButton /></div>
+          <div className="mt-6 flex justify-center"><AudioButton text={step.arabic} variant="fusha" /></div>
         </div>
         <button onClick={() => onDone(true)} className="mt-8 w-full rounded-xl bg-forest py-3.5 text-sm font-bold text-ivory">
           J'ai retenu
@@ -142,9 +142,9 @@ function StepRenderer({ step, onDone }: { step: LessonStep; onDone: (correct?: b
           {step.type === "choice" ? step.prompt : "Quelle prononciation entends-tu ?"}
         </h2>
         {step.arabic && (
-          <div className="mt-6 rounded-3xl border border-night/10 bg-white p-6 flex items-center justify-between">
+          <div className="mt-6 ios-card-lg p-6 flex items-center justify-between">
             <ArabicText size="xl" className="font-bold">{step.arabic}</ArabicText>
-            <AudioButton />
+            <AudioButton text={step.arabic} variant="fusha" />
           </div>
         )}
         <div className="mt-6 space-y-2">
@@ -158,8 +158,8 @@ function StepRenderer({ step, onDone }: { step: LessonStep; onDone: (correct?: b
                 disabled={revealed}
                 onClick={() => setPicked(oi)}
                 className={cn(
-                  "w-full rounded-2xl border p-4 text-left font-semibold text-sm transition-all",
-                  !revealed && "border-night/10 bg-white hover:border-forest/40",
+                  "ios-pressable w-full rounded-2xl border p-4 text-left font-semibold text-sm transition-all",
+                  !revealed && "border-[var(--ios-hairline)] bg-card hover:border-forest/40",
                   revealed && isCorrect && "border-forest bg-forest/10 text-forest",
                   revealed && isPicked && !isCorrect && "border-clay bg-clay/10 text-clay",
                 )}
@@ -187,9 +187,9 @@ function StepRenderer({ step, onDone }: { step: LessonStep; onDone: (correct?: b
       <div className="animate-fade-in">
         <p className="font-mono text-[10px] uppercase tracking-widest text-clay mb-2">Traduction</p>
         <h2 className="text-2xl font-extrabold tracking-tight">{step.prompt}</h2>
-        <div className="mt-6 rounded-3xl border border-night/10 bg-white p-6 flex items-center justify-between">
+        <div className="mt-6 ios-card-lg p-6 flex items-center justify-between">
           <ArabicText size="xl" className="font-bold">{step.arabic}</ArabicText>
-          <AudioButton />
+          <AudioButton text={step.arabic} variant="fusha" />
         </div>
         <input
           value={answer}

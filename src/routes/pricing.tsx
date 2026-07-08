@@ -18,7 +18,7 @@ const PLANS = [
     name: "Gratuit",
     price: "0€",
     period: "pour toujours",
-    features: ["Premières leçons de chaque parcours", "5 min de Compagnon IA / semaine", "Révisions limitées", "Statistiques de base"],
+    features: ["Tous les dialectes en accès libre", "5 min de Compagnon IA / semaine", "Révisions limitées", "Statistiques de base"],
     cta: "Commencer",
     to: "/onboarding" as const,
     featured: false,
@@ -27,7 +27,7 @@ const PLANS = [
     name: "Premium",
     price: "9,90€",
     period: "/ mois",
-    features: ["Tous les cours & dialectes", "Compagnon IA illimité", "Prononciation guidée", "Répétition espacée illimitée", "Statistiques avancées"],
+    features: ["Compagnon IA illimité", "Prononciation guidée avancée", "Répétition espacée illimitée", "Statistiques avancées", "Sans publicité"],
     cta: "Essayer 7 jours",
     to: "/signup" as const,
     featured: true,
@@ -45,7 +45,7 @@ const PLANS = [
 
 function Pricing() {
   return (
-    <div className="min-h-screen bg-ivory text-night">
+    <div className="min-h-screen sahbi-bg text-night">
       <header className="mx-auto max-w-6xl px-6 pt-8 flex items-center justify-between">
         <Link to="/" className="text-2xl font-extrabold text-forest">Sahbi</Link>
         <Link to="/login" className="text-sm font-bold text-night/60">Connexion</Link>
@@ -63,7 +63,7 @@ function Pricing() {
               className={
                 p.featured
                   ? "rounded-3xl bg-forest p-8 text-ivory ring-4 ring-gold/30"
-                  : "rounded-3xl border border-night/10 bg-white p-8"
+                  : "ios-card-lg p-8"
               }
             >
               <div className="flex items-baseline justify-between">

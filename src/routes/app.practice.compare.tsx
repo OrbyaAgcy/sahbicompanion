@@ -42,10 +42,10 @@ function Compare() {
             <h3 className="text-lg font-extrabold tracking-tight">{c.french}</h3>
             <div className="mt-3 grid gap-3 sm:grid-cols-2">
               {c.entries.map((e) => (
-                <div key={e.variant} className="rounded-2xl border border-night/5 bg-white p-4">
+                <div key={e.variant} className="ios-card p-4">
                   <div className="flex items-center justify-between mb-3">
                     <VariantChip variant={e.variant} />
-                    <AudioButton size="sm" />
+                    <AudioButton size="sm" text={e.arabic} variant={e.variant} />
                   </div>
                   <ArabicText size="lg" className="font-bold">{e.arabic}</ArabicText>
                   <p className="mt-2 font-mono text-xs italic text-night/50">/ {e.translit} /</p>

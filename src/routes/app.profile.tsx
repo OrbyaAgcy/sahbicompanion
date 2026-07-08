@@ -41,7 +41,7 @@ function Profile() {
 
 function Kpi({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-night/5 bg-white p-4">
+    <div className="ios-card p-4">
       <p className="font-mono text-[10px] uppercase tracking-widest text-night/40">{label}</p>
       <p className="mt-1 text-xl font-extrabold">{value}</p>
     </div>
@@ -50,7 +50,7 @@ function Kpi({ label, value }: { label: string; value: string }) {
 
 function Row({ label, to }: { label: string; to: "/app/progress" | "/app/achievements" | "/app/settings" | "/pricing" }) {
   return (
-    <Link to={to} className="flex items-center justify-between rounded-2xl border border-night/5 bg-white p-4">
+    <Link to={to} className="flex items-center justify-between ios-card ios-pressable p-4">
       <span className="font-semibold">{label}</span>
       <ChevronRight className="size-4 text-night/40" />
     </Link>

@@ -8,7 +8,7 @@ export function ExpressionCard({ expr, showTranslit = true }: { expr: Expression
     <div className="ios-card-lg p-6 animate-ios-in bg-[linear-gradient(180deg,color-mix(in_oklab,var(--clay)_6%,var(--card)),var(--card))]">
       <div className="mb-6 flex items-start justify-between">
         <VariantChip variant={expr.variant} />
-        <AudioButton />
+        <AudioButton text={expr.arabic} variant={expr.variant} />
       </div>
       <div className="mb-4">
         <ArabicText size="xl" className="font-semibold text-night">

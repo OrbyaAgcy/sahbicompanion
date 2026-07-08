@@ -24,7 +24,7 @@ function PracticeIndex() {
         {CARDS.map((c) => {
           const Icon = c.icon;
           return (
-            <Link key={c.to} to={c.to} className="group rounded-3xl border border-night/5 bg-white p-6 hover:border-forest/40 transition-colors">
+            <Link key={c.to} to={c.to} className="group ios-card ios-pressable p-6 hover:shadow-[var(--ios-shadow-md)] transition-shadow">
               <div className={`size-12 rounded-2xl ${c.iconClass} grid place-items-center mb-4`}>
                 <Icon className="size-5" />
               </div>

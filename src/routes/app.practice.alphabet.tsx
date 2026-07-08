@@ -21,7 +21,7 @@ function Alphabet() {
         <span dir="rtl" className="font-arabic text-8xl font-bold text-night block">{letter.letter}</span>
         <p className="mt-4 font-mono text-sm italic text-night/50">{letter.name}</p>
         <p className="mt-1 text-sm">Son : <span className="font-bold">{letter.sound}</span></p>
-        <div className="mt-6 flex justify-center"><AudioButton /></div>
+        <div className="mt-6 flex justify-center"><AudioButton text={letter.letter} variant="fusha" /></div>
       </div>
 
       <div className="mt-8 grid grid-cols-6 sm:grid-cols-8 gap-2">
@@ -38,7 +38,7 @@ function Alphabet() {
         ))}
       </div>
 
-      <div className="mt-10 rounded-2xl border border-night/10 bg-white p-4">
+      <div className="mt-10 ios-card p-4">
         <p className="font-mono text-[10px] uppercase tracking-widest text-clay mb-2">Paires proches</p>
         <p className="text-sm">ب / ت / ث · ج / ح / خ · د / ذ · ص / ض · ط / ظ · ع / غ · ف / ق</p>
       </div>

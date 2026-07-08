@@ -29,7 +29,7 @@ function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-ivory text-night flex flex-col">
+    <div className="min-h-screen sahbi-bg text-night flex flex-col">
       <header className="px-6 pt-8 max-w-2xl mx-auto w-full">
         <div className="flex items-center justify-between">
           <span className="text-xl font-extrabold text-forest">Sahbi</span>
@@ -76,8 +76,10 @@ function Onboarding() {
                     disabled={!v.available}
                     onClick={() => update({ mainVariant: v.slug })}
                     className={cn(
-                      "text-left rounded-2xl border p-4 transition-all",
-                      selected ? "border-forest bg-forest/5 ring-2 ring-forest/30" : "border-night/10 bg-white",
+                      "text-left p-4 transition-all ios-pressable",
+                      selected
+                        ? "rounded-[22px] border border-forest bg-forest/5 ring-2 ring-forest/30"
+                        : "ios-card",
                       !v.available && "opacity-40 cursor-not-allowed",
                     )}
                   >
@@ -215,7 +217,7 @@ function Onboarding() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-night/10 bg-white p-3">
+    <div className="ios-card p-3">
       <p className="font-mono text-[10px] uppercase tracking-widest text-night/40">{label}</p>
       <p className="mt-1 text-lg font-extrabold">{value}</p>
     </div>
@@ -249,8 +251,10 @@ function Choice({
               key={String(v)}
               onClick={() => onChange(v)}
               className={cn(
-                "w-full flex items-center justify-between rounded-2xl border p-4 text-left transition-all",
-                sel ? "border-forest bg-forest/5 ring-2 ring-forest/30" : "border-night/10 bg-white",
+                "w-full flex items-center justify-between p-4 text-left transition-all ios-pressable",
+                sel
+                  ? "rounded-[22px] border border-forest bg-forest/5 ring-2 ring-forest/30"
+                  : "ios-card",
               )}
             >
               <span className="font-semibold text-sm">{label}</span>

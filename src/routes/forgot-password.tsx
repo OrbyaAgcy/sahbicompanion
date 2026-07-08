@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 export const Route = createFileRoute("/forgot-password")({
   head: () => ({ meta: [{ title: "Mot de passe oublié — Sahbi" }] }),
   component: () => (
-    <div className="min-h-screen bg-ivory grid place-items-center px-6">
+    <div className="min-h-screen sahbi-bg grid place-items-center px-6">
       <div className="w-full max-w-md">
         <Link to="/" className="text-2xl font-extrabold text-forest">Sahbi</Link>
         <h1 className="mt-8 text-3xl font-extrabold tracking-tight">Mot de passe oublié.</h1>

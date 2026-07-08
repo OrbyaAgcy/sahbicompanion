@@ -30,7 +30,7 @@ function Progress() {
 
       <section className="mt-10">
         <h3 className="font-mono text-[10px] uppercase tracking-widest text-night/40 mb-4">30 derniers jours</h3>
-        <div className="rounded-3xl border border-night/5 bg-white p-4 h-52">
+        <div className="ios-card-lg p-4 h-52">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={monthly}>
               <XAxis dataKey="d" tick={{ fontSize: 10, fill: "#94a3b8" }} axisLine={false} tickLine={false} />
@@ -43,7 +43,7 @@ function Progress() {
 
       <section className="mt-10">
         <h3 className="font-mono text-[10px] uppercase tracking-widest text-night/40 mb-4">Roue des compétences</h3>
-        <div className="rounded-3xl border border-night/5 bg-white p-4 h-72">
+        <div className="ios-card-lg p-4 h-72">
           <ResponsiveContainer width="100%" height="100%">
             <RadarChart data={SKILL_SCORES}>
               <PolarGrid stroke="#e2e8f0" />
@@ -63,7 +63,7 @@ function Progress() {
             { l: "7 jours", d: "Débloqué" },
             { l: "100 mots", d: "53 restants" },
           ].map((j) => (
-            <div key={j.l} className="rounded-2xl border border-night/5 bg-white p-4">
+            <div key={j.l} className="ios-card p-4">
               <p className="font-bold text-sm">{j.l}</p>
               <p className="mt-1 text-xs text-night/50">{j.d}</p>
             </div>
@@ -76,7 +76,7 @@ function Progress() {
 
 function Kpi({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-night/5 bg-white p-4">
+    <div className="ios-card p-4">
       <p className="font-mono text-[10px] uppercase tracking-widest text-night/40">{label}</p>
       <p className="mt-1 text-2xl font-extrabold">{value}</p>
     </div>

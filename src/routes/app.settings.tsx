@@ -48,7 +48,7 @@ function Settings() {
 
 function Group({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-3xl border border-night/5 bg-white overflow-hidden">
+    <div className="ios-card overflow-hidden">
       <p className="px-4 pt-4 font-mono text-[10px] uppercase tracking-widest text-clay">{title}</p>
       <div className="mt-2 divide-y divide-night/5">{children}</div>
     </div>

@@ -266,3 +266,29 @@
   to { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-in { animation: fadeInSlide 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+/* -------------------------------------------------------------------------- */
+/* Decorated background — brand color washes + a subtle arabesque motif,      */
+/* so pages read as "Sahbi" rather than flat white/ivory panels.              */
+/* -------------------------------------------------------------------------- */
+
+@utility sahbi-bg {
+  background-color: var(--background);
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+  background-attachment: fixed, fixed, fixed, fixed;
+  background-position: 10% -10%, 110% 0%, 50% 110%, 0 0;
+  background-size: 70% 60%, 60% 55%, 90% 60%, 96px 96px;
+  background-image:
+    radial-gradient(ellipse at center, color-mix(in oklab, var(--forest) 13%, transparent), transparent 70%),
+    radial-gradient(ellipse at center, color-mix(in oklab, var(--clay) 11%, transparent), transparent 70%),
+    radial-gradient(ellipse at center, color-mix(in oklab, var(--gold) 9%, transparent), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23164E33' stroke-width='1' stroke-opacity='0.45'%3E%3Cpath d='M36 3 C45 12 45 17 36 27 C27 17 27 12 36 3 Z'/%3E%3Cpath d='M36 69 C45 60 45 55 36 45 C27 55 27 60 36 69 Z'/%3E%3Cpath d='M3 36 C12 27 17 27 27 36 C17 45 12 45 3 36 Z'/%3E%3Cpath d='M69 36 C60 27 55 27 45 36 C55 45 60 45 69 36 Z'/%3E%3Ccircle cx='36' cy='36' r='4'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.dark .sahbi-bg {
+  background-image:
+    radial-gradient(ellipse at center, color-mix(in oklab, var(--forest) 22%, transparent), transparent 70%),
+    radial-gradient(ellipse at center, color-mix(in oklab, var(--clay) 16%, transparent), transparent 70%),
+    radial-gradient(ellipse at center, color-mix(in oklab, var(--gold) 12%, transparent), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23F5EFE2' stroke-width='1' stroke-opacity='0.16'%3E%3Cpath d='M36 3 C45 12 45 17 36 27 C27 17 27 12 36 3 Z'/%3E%3Cpath d='M36 69 C45 60 45 55 36 45 C27 55 27 60 36 69 Z'/%3E%3Cpath d='M3 36 C12 27 17 27 27 36 C17 45 12 45 3 36 Z'/%3E%3Cpath d='M69 36 C60 27 55 27 45 36 C55 45 60 45 69 36 Z'/%3E%3Ccircle cx='36' cy='36' r='4'/%3E%3C/g%3E%3C/svg%3E");
+}
