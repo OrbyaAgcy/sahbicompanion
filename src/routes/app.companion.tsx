@@ -13,9 +13,9 @@ function CompanionIndex() {
   return (
     <main className="mx-auto max-w-2xl px-6 pt-10 pb-16">
       <PageHeader
-        eyebrow="Compagnon IA"
+        eyebrow="Compagnon IA · bientôt disponible"
         title="Discute en arabe, sans peur."
-        subtitle="Sahbi s'adapte à ton niveau, corrige en douceur, retient ce que tu apprends."
+        subtitle="Sahbi s'adapte à ton niveau, corrige en douceur, retient ce que tu apprends. Arrive à la prochaine mise à jour."
       />
 
       <div className="grid gap-3 sm:grid-cols-2">
